@@ -1,11 +1,15 @@
 package com.my.keyboard;
 
+
 import android.bluetooth.BluetoothHidDevice;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothProfile;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+
+import android.os.Bundle;
+
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -20,8 +24,10 @@ import com.my.keyboard.databinding.ActivityMainBinding;
 public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
+
     private BluetoothAdapter mBtAdapter;
     private BluetoothHidDevice mHidDevice;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.navView, navController);
+
         InitBluetoothHID();
     }
 
@@ -66,6 +73,7 @@ public class MainActivity extends AppCompatActivity {
 
         }
     },BluetoothProfile.HID_DEVICE);
+
     }
 
 }
