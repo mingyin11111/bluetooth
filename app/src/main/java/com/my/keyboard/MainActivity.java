@@ -62,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
                         Log.e("tag" ,   "Proxy received but it's not  BluetoothHIDDevice");
                             return;
                     }
+                    花木成畦手自栽
                     mHidDevice=(BluetoothHidDevice) proxy;
 
                 }
