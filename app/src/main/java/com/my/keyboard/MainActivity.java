@@ -3,7 +3,11 @@ package com.my.keyboard;
 
 import android.bluetooth.BluetoothHidDevice;
 import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothHidDeviceAppQosSettings;
+import android.bluetooth.BluetoothHidDeviceAppSdpSettings;
 import android.bluetooth.BluetoothProfile;
+import android .bluetooth.BluetoothDevice;
+import android.bluetooth
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -24,9 +28,17 @@ import com.my.keyboard.databinding.ActivityMainBinding;
 public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
-
     private BluetoothAdapter mBtAdapter;
     private BluetoothHidDevice mHidDevice;
+    private BluetoothDevice mHostDevice;
+    private final BluetoothHidDeviceAppQosSettings qosSettings
+            = new BluetoothHidDeviceAppQosSettings(BluetoothHidDeviceAppQosSettings.SERVICE_BEST_EFFORT,
+            800, 9, 0, 11250, BluetoothHidDeviceAppQosSettings.MAX
+    );
+    private final BluetoothHidDeviceAppSdpSettings mouseSdpSettings = new BluetoothHidDeviceAppSdpSettings(
+            HidConfig.MOUSE_NAME, HidConfig.DESCRIPTION, HidConfig.PROVIDER,
+            BluetoothHidDevice.SUBCLASS1_MOUSE, HidConfig.MOUSE_COMBO);
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
                         Log.e("tag" ,   "Proxy received but it's not  BluetoothHIDDevice");
                             return;
                     }
-                    花木成畦手自栽
+
                     mHidDevice=(BluetoothHidDevice) proxy;
 
                 }
